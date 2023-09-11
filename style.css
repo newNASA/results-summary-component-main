@@ -118,7 +118,7 @@ li {
     align-items: center;
 }
 
-.summary__elements {
+.summary__elements{
     margin-bottom: 40px;
 }
 
@@ -189,5 +189,8 @@ li {
     font-weight: 600;
     border: transparent;
     border-radius: 50pc;
-    transition: 1s;
+}
+
+.con-button:hover{
+    background: var(--left-gradient-bg);
 }
