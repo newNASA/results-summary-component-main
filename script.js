@@ -21,15 +21,27 @@ const data = [
     }
 ];
 
+let sum = 0;
+
+data.forEach(function (item) {
+    sum += item.score;
+});
+
+const averageScore = sum / data.length;
+
+const result = document.querySelector('.degree-num');
+result.textContent = Math.round(averageScore); 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const summaryElements = document.querySelector(".summary__elements");
 
     data.forEach(function (item) {
-        // Create a new list item for each data item
+
         const listItem = document.createElement("li");
         listItem.className = `list__items--${item.category.toLowerCase()}`;
 
-        // Create and configure the image element
+
         const icon = document.createElement("img");
         icon.className = "stats-list__item-icon";
         icon.src = item.icon;
@@ -37,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         icon.width = 20;
         icon.height = 20;
 
-        // Create and configure the spans for title, result, percent label, and max
         const title = document.createElement("span");
         title.className = "item-title";
         title.textContent = item.category;
@@ -51,13 +62,30 @@ document.addEventListener("DOMContentLoaded", function () {
         max.className = "item-max";
         max.textContent = " / 100";
 
-        // Append all elements to the list item
         listItem.appendChild(icon);
         listItem.appendChild(title);
         listItem.appendChild(result);
         listItem.appendChild(max);
 
-        // Append the list item to the summary elements
         summaryElements.appendChild(listItem);
     });
 });
+
+
+
+const elThemeTogglerButton = document.querySelector('.theme-toggle-button');
+
+function switchTheme() {
+    const elRoot = document.documentElement
+    let dataTheme = elRoot.getAttribute('data-theme');
+
+    let newTheme = (dataTheme === 'light') ? 'dark' : 'light';
+
+    elRoot.setAttribute('data-theme', newTheme);
+
+    localStorage.setItem('theme', newTheme);
+}
+
+if (elThemeTogglerButton) {
+    elThemeTogglerButton.addEventListener('click', switchTheme);
+}

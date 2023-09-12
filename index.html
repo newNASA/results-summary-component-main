@@ -14,6 +14,18 @@
     rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <script>
+      let localSTheme = localStorage.getItem('theme');
+      let themeToSet = localSTheme;
+  
+      if (!localSTheme) {
+        themeToSet = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+  
+      document.documentElement.setAttribute('data-theme', themeToSet);
+    </script>
+
 </head>
 
 <body>
@@ -22,7 +34,7 @@
     <div class="left">
       <h1 class="container__heading">Your Result</h1>
       <div class="degree-circle">
-        <h1>76</h1>
+        <h1 class="degree-num">76</h1>
         <span>of 100</span>
       </div>
       <h2 class="container__result">Great</h2>
@@ -34,6 +46,8 @@
       <a href="#" class="con-button">Continue</a>
     </div>
   </div>
+
+  <button class="theme-toggle-button" type="button">Toggle theme</button>
 
   <script src="script.js"></script>
 

@@ -10,11 +10,16 @@ li {
     list-style: none;
 }
 
-:root {
+:root[data-theme='light']{
+    --body-bg:#ECF2FFFF;
+    --card-bg:#fff;
+    --dark-color: #1f314f;
+    --container-bg:#fff;
+    
     --left-gradient-bg: linear-gradient(#6341F6FF, #302BE5FF);
     --left-heading-color: #D1CAFFFF;
     --left-degree-gradient-bg: linear-gradient(#4C22CAFF, #4633EDFF);
-
+    
     --right-heading-color: hsl(224, 30%, 27%);
     --right-reaction--bg: #FFF6F6FF;
     --right-reaction--text: #f55;
@@ -27,12 +32,34 @@ li {
     --right-max: rgba(48, 59, 89, 0.5);
 }
 
+:root[data-theme="dark"]{
+    --dark-color: #fff;
+    --body-bg:#000;
+    --card-bg: #1f314f;
+    --container-bg: #1f314f;
+
+    --left-gradient-bg:linear-gradient(#120092 , #2e27fd);
+    --left-degree-gradient-bg: linear-gradient(#050181, #2e27fd);
+    --left-heading-color: #D1CAFFFF;
+
+    --right-heading-color: #D1CAFFFF;
+    --right-reaction--bg: rgba(255, 246, 246, .1);
+    --right-reaction--text: rgba(255, 85, 85, 1); 
+    --right-memory-bg: rgba(255, 251, 244, .1);
+    --right-memory-text: rgba(255, 178, 30, 1); 
+    --right-verbal-bg: rgba(242, 252, 249, .1); 
+    --right-verbal-text: rgba(0, 187, 143, 1);
+    --right-visual-bg: rgba(243, 244, 253, .1);
+    --right-visual-text: rgba(17, 37, 214, 1); 
+    /* --right-max: ; */
+}
+
 body {
-    background-color: #ECF2FFFF;
+    background-color: var(--body-bg);
 }
 
 .container {
-    background-color: #fff;
+    background-color:var(--container-bg);
     width: 750px;
     display: flex;
     position: absolute;
@@ -191,4 +218,24 @@ li {
 
 .con-button:hover{
     background: var(--left-gradient-bg);
+}
+
+.theme-toggle-button {
+    position: absolute;
+    z-index: 1;
+    right: 12px;
+    top: 12px;
+    padding: 4px 12px;
+    border: 1px solid var(--dark-color);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: normal;
+    background-color: transparent;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--dark-color);
+    color: var(--body-bg);
 }
