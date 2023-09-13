@@ -217,6 +217,7 @@ li {
 
 .con-button:hover{
     background: var(--left-gradient-bg);
+    color: var(--right-heading-color);
 }
 
 .theme-toggle-button {
